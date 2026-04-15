@@ -4,14 +4,13 @@ import './App.css'
 function App() {
 
   return (
-    <>
-    Hello World
-    </>
-      // <ABCLights />
+      <ABCLights />
   )
 }
 
 export default App
+
+
 
 // ── Styles ──────────────────────────────────────────────────────────────────
 const css = `
@@ -847,7 +846,7 @@ const BLOGS = [
 ];
 
 
-export function ABCLights() {
+function ABCLights() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
