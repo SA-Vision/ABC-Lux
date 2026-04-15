@@ -1,11 +1,7 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -40,13 +36,11 @@ const css = `
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Outfit', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
   }
 
@@ -109,7 +103,6 @@ const css = `
     padding: 18px 60px;
   }
   .logo {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 28px;
     font-weight: 600;
     color: var(--white);
@@ -149,7 +142,6 @@ const css = `
     color: #0A0A0A;
     border: none;
     padding: 10px 24px;
-    font-family: 'Outfit', sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -166,7 +158,6 @@ const css = `
     color: var(--text);
     border: 1px solid rgba(201,168,76,0.4);
     padding: 10px 24px;
-    font-family: 'Outfit', sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 2px;
@@ -256,7 +247,6 @@ const css = `
     gap: 4px;
   }
   .hero-badge strong {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 13px;
     color: var(--gold-light);
     font-weight: 500;
@@ -318,7 +308,6 @@ const css = `
     max-width: 200px;
   }
   .about-img-overlay strong {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     display: block;
     font-weight: 600;
@@ -358,7 +347,6 @@ const css = `
     font-size: 15px;
     color: var(--gold-light);
     margin-bottom: 6px;
-    font-family: 'Outfit', sans-serif;
     font-weight: 500;
   }
   .pillar p {
@@ -372,7 +360,6 @@ const css = `
     align-items: center;
     gap: 12px;
     font-size: 18px;
-    font-family: 'Cormorant Garamond', serif;
     color: var(--gold);
     margin-top: 8px;
   }
@@ -396,7 +383,6 @@ const css = `
   }
   .stat:last-child { border-right: none; }
   .stat-num {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 52px;
     font-weight: 600;
     line-height: 1;
@@ -534,7 +520,6 @@ const css = `
   .product-info { padding: 20px 24px 24px; }
   .product-info h4 {
     font-size: 18px;
-    font-family: 'Cormorant Garamond', serif;
     margin-bottom: 6px;
     font-weight: 500;
   }
@@ -612,7 +597,6 @@ const css = `
     font-weight: 500;
     color: var(--gold-light);
     margin-bottom: 4px;
-    font-family: 'Outfit', sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -753,7 +737,6 @@ const css = `
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 20px;
-    font-family: 'Outfit', sans-serif;
     font-weight: 500;
   }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -875,7 +858,7 @@ function ABCLights() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id) => {
+  const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
