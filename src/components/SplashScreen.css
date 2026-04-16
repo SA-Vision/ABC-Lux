@@ -1,0 +1,87 @@
+.splash {
+	position: fixed;
+	inset: 0;
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	overflow: hidden;
+}
+
+.splash-flash {
+	position: absolute;
+	inset: 0;
+	background: var(--primary-color);
+	opacity: 0;
+	pointer-events: none;
+}
+
+.splash-ripple {
+	position: fixed;
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	background: radial-gradient(circle, var(--primary-color) 0%, rgb(from var(--primary-color) r g b / 0.8) 25%, rgb(from var(--primary-color) r g b / 0.3) 55%, rgb(from var(--primary-color) r g b / 0.05) 75%, transparent 85%);
+	opacity: 0;
+	pointer-events: none;
+}
+
+.splash-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 14px;
+}
+
+.burst-btn {
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	background: #111;
+	border: 2px solid #333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: default;
+	transition: transform 0.15s ease;
+}
+
+.burst-btn.pressing {
+	transform: scale(0.88);
+}
+
+.inner-dot {
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: var(--primary-color);
+}
+
+.burst-btn.pressing .inner-dot {
+	background: rgb(from var(--primary-color) r g b / 0.5);
+}
+
+.splash-label {
+	font-size: 11px;
+	color: rgb(from var(--primary-color) r g b / 0.8);
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.cursor {
+	animation: blink 0.7s step-end infinite;
+	margin-left: 1px;
+}
+
+@keyframes blink {
+
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+}

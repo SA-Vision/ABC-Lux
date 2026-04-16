@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
 import './App.css'
+import SplashScreen from './components/SplashScreen';
 
-function App() {
+export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
 
   return (
-      <ABCLights />
-  )
+    <>
+      {showSplash && (
+        <SplashScreen onComplete={() => setShowSplash(false)} />
+      )}
+      <div style={{ opacity: showSplash ? 0 : 1, transition: 'opacity 0.5s' }}>
+        <ABCLights />
+      </div>
+    </>
+  );
 }
-
-export default App
 
 
 
@@ -906,7 +913,7 @@ function ABCLights() {
       <section id="home">
         <div className="hero-left">
           <div className="label"><span className="gold-line" />Welcome to ABC Lights</div>
-          <h1>Your One-Stop Destination for <span className="gold">Modern & Elegant</span> Lighting</h1>
+          <h1>Your One-Stop Destination for <span className="">Modern & Elegant</span> Lighting</h1>
           <p>ABC Lights provides modern and reliable lighting solutions for homes and businesses, helping you create bright, beautiful, and comfortable spaces with ease.</p>
           <div className="hero-ctas">
             <a href="#products" className="btn-primary" onClick={e => { e.preventDefault(); scrollTo("products"); }}>Explore Products</a>
