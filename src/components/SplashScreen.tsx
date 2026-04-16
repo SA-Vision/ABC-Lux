@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import './SplashScreen.css';
 
-export default function SplashScreen({ onComplete }) {
-	const btnRef = useRef(null);
-	const rippleRef = useRef(null);
-	const flashRef = useRef(null);
+export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
+	const btnRef = useRef<HTMLButtonElement>(null);
+	const rippleRef = useRef<HTMLDivElement>(null);
+	const flashRef = useRef<HTMLDivElement>(null);
 	const [typed, setTyped] = useState('');
 	const word = 'Lighting Up..';
 
@@ -24,27 +24,29 @@ export default function SplashScreen({ onComplete }) {
 		const flash = flashRef.current;
 
 		const pressTimer = setTimeout(() => {
-			btn.classList.add('pressing');
+			btn?.classList.add('pressing');
 		}, 800);
 
 		const burstTimer = setTimeout(() => {
-			const btnRect = btn.getBoundingClientRect();
+			const btnRect = btn?.getBoundingClientRect();
 			const maxScale = Math.ceil(Math.max(window.innerWidth, window.innerHeight) * 2.5 / 72);
 
-			ripple.style.left = btnRect.left + btnRect.width / 2 - 36 + 'px';
-			ripple.style.top = btnRect.top + btnRect.height / 2 - 36 + 'px';
+			if (ripple && btnRect) {
+				ripple.style.left = btnRect.left + btnRect.width / 2 - 36 + 'px';
+				ripple.style.top = btnRect.top + btnRect.height / 2 - 36 + 'px';
+			}
 
-			ripple.animate([
+			ripple?.animate([
 				{ opacity: 0.95, transform: 'scale(1)' },
 				{ opacity: 1, transform: `scale(${maxScale})` }
 			], { duration: 1500, fill: 'forwards', easing: 'cubic-bezier(0.4, 0, 0.2, 1)' });
 
 			setTimeout(() => {
-				flash.animate([
+				if (flash) flash.animate([
 					{ opacity: 1 }, { opacity: 0.6 }, { opacity: 0 }
 				], { duration: 600, fill: 'forwards' });
 
-				ripple.animate([
+				if (ripple) ripple.animate([
 					{ opacity: 1 }, { opacity: 0 }
 				], { duration: 400, fill: 'forwards', delay: 100 });
 
