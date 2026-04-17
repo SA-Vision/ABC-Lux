@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import './App.css'
 import SplashScreen from './components/SplashScreen';
+import Header from "./components/Header";
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -69,136 +70,8 @@ const css = `
     margin-bottom: 16px;
   }
 
-  /* ── HEADER ── */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    transition: background 0.4s, backdrop-filter 0.4s, border-bottom 0.4s;
-  }
-  header.scrolled {
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .topbar {
-    background: rgba(201,168,76,0.1);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
-    padding: 6px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .topbar a { color: var(--gold-light); text-decoration: none; margin-left: 16px; }
-  .topbar-socials { display: flex; gap: 12px; }
-  .topbar-socials a {
-    color: var(--text-muted);
-    font-size: 12px;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .topbar-socials a:hover { color: var(--gold); }
-
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 60px;
-  }
-  .logo {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: 2px;
-  }
-  .logo span { color: var(--gold); }
-
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 400;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.3s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links a:hover::after { width: 100%; }
-
-  .btn-primary {
-    background: var(--gold);
-    color: #0A0A0A;
-    border: none;
-    padding: 10px 24px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid rgba(201,168,76,0.4);
-    padding: 10px 24px;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* hamburger */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 1px;
-    background: var(--text);
-    transition: all 0.3s;
-  }
-
   /* ── HERO ── */
-  #home {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-left {
+  .hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -206,13 +79,13 @@ const css = `
     position: relative;
     z-index: 2;
   }
-  .hero-left h1 {
+  .hero h1 {
     font-size: clamp(48px, 5vw, 76px);
     line-height: 1.1;
     margin-bottom: 24px;
     font-weight: 400;
   }
-  .hero-left p {
+  .hero p {
     font-size: 16px;
     color: var(--text-muted);
     line-height: 1.7;
@@ -220,24 +93,6 @@ const css = `
     margin-bottom: 40px;
   }
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.7);
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--bg) 0%, transparent 40%);
-    z-index: 1;
-  }
 
   .hero-badges {
     display: flex;
@@ -775,10 +630,7 @@ const css = `
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
     nav { padding: 18px 32px; }
-    .topbar { padding: 6px 32px; }
-    #home { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 140px 32px 80px; }
+    .hero { padding: 140px 32px 80px; }
     #about { grid-template-columns: 1fr; }
     .about-img { min-height: 360px; }
     .about-content { padding: 60px 32px; }
@@ -793,10 +645,8 @@ const css = `
   }
 
   @media (max-width: 640px) {
-    .nav-links, .topbar { display: none; }
-    .hamburger { display: flex; }
     nav { padding: 18px 24px; }
-    .hero-left { padding: 120px 24px 60px; }
+    .hero { padding: 120px 24px 60px; }
     .categories-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
     .collection-grid { grid-template-columns: 1fr; }
     .blog-grid { grid-template-columns: 1fr; }
@@ -854,70 +704,21 @@ const BLOGS = [
 
 
 function ABCLights() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
-  };
 
   return (
     <>
       <style>{css}</style>
 
-      {/* ── HEADER ── */}
-      <header className={scrolled ? "scrolled" : ""}>
-        <div className="topbar">
-          <div>
-            <a href="tel:+97450137888">+974 5013 7888</a>
-            <a href="mailto:info@abclights.qa">info@abclights.qa</a>
-          </div>
-          <div className="topbar-socials">
-            <a href="https://www.facebook.com/abclightsqa" target="_blank" rel="noreferrer">Facebook</a>
-            <a href="https://www.instagram.com/abclightsqa/" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://www.tiktok.com/@abclightsqa" target="_blank" rel="noreferrer">TikTok</a>
-          </div>
-        </div>
-        <nav>
-          <a href="#" className="logo">ABC<span> Lights</span></a>
-          <ul className="nav-links">
-            {[["home", "Home"], ["about", "About Us"], ["products", "Products"], ["store", "Store"], ["blog", "Blog"]].map(([id, label]) => (
-              <li key={id}><a href={`#${id}`} onClick={e => { e.preventDefault(); scrollTo(id); }}>{label}</a></li>
-            ))}
-          </ul>
-          <a href="http://wa.me/+97450137888" className="btn-primary" target="_blank" rel="noreferrer">Chat Now</a>
-          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-            <span /><span /><span />
-          </div>
-        </nav>
-        {menuOpen && (
-          <div style={{ background: "#111", padding: "16px 24px", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
-            {[["home", "Home"], ["about", "About Us"], ["products", "Products"], ["store", "Store"], ["blog", "Blog"]].map(([id, label]) => (
-              <div key={id} style={{ padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                <a href={`#${id}`} style={{ color: "#F0EAD6", textDecoration: "none", fontSize: 14, letterSpacing: 2, textTransform: "uppercase" }}
-                  onClick={e => { e.preventDefault(); scrollTo(id); }}>{label}</a>
-              </div>
-            ))}
-          </div>
-        )}
-      </header>
-
+      <Header />
       {/* ── HERO ── */}
       <section id="home">
-        <div className="hero-left">
+        <div className="hero">
           <div className="label"><span className="gold-line" />Welcome to ABC Lights</div>
           <h1>Your One-Stop Destination for <span className="">Modern & Elegant</span> Lighting</h1>
           <p>ABC Lights provides modern and reliable lighting solutions for homes and businesses, helping you create bright, beautiful, and comfortable spaces with ease.</p>
           <div className="hero-ctas">
-            <a href="#products" className="btn-primary" onClick={e => { e.preventDefault(); scrollTo("products"); }}>Explore Products</a>
-            <a href="#about" className="btn-outline" onClick={e => { e.preventDefault(); scrollTo("about"); }}>About Us</a>
+            <a href="#products" className="btn-primary" >Explore Products</a>
+            <a href="#about" className="btn-outline" >About Us</a>
           </div>
           <div className="hero-badges">
             <div className="hero-badge"><strong>Latest Designs</strong><span>Always in trend</span></div>
@@ -925,12 +726,6 @@ function ABCLights() {
             <div className="hero-badge"><strong>Free Shipping</strong><span>On all orders</span></div>
             <div className="hero-badge"><strong>Affordable</strong><span>Best pricing</span></div>
           </div>
-        </div>
-        <div className="hero-right">
-          <img
-            src="https://abclights.qa/wp-content/uploads/2025/07/ABC-Lights-Qatar-4.webp"
-            alt="ABC Lights Qatar showroom"
-          />
         </div>
       </section>
 
@@ -1128,7 +923,7 @@ function ABCLights() {
             <h5>Quick Links</h5>
             <ul>
               {[["home", "Home"], ["about", "About Us"], ["products", "Products"], ["store", "Store"], ["blog", "Blog"]].map(([id, label]) => (
-                <li key={id}><a href={`#${id}`} onClick={e => { e.preventDefault(); scrollTo(id); }}>{label}</a></li>
+                <li key={id}><a href={`#${id}`} >{label}</a></li>
               ))}
             </ul>
           </div>
