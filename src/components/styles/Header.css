@@ -93,46 +93,6 @@ nav {
 	width: 100%;
 }
 
-.btn-primary {
-	background: var(--gold);
-	color: #0A0A0A;
-	border: none;
-	padding: 10px 24px;
-	font-size: 12px;
-	font-weight: 600;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	cursor: pointer;
-	text-decoration: none;
-	display: inline-block;
-	transition: background 0.2s, transform 0.2s;
-}
-
-.btn-primary:hover {
-	background: var(--gold-light);
-	transform: translateY(-1px);
-}
-
-.btn-outline {
-	background: transparent;
-	color: var(--text);
-	border: 1px solid rgba(201, 168, 76, 0.4);
-	padding: 10px 24px;
-	font-size: 12px;
-	font-weight: 400;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	cursor: pointer;
-	text-decoration: none;
-	display: inline-block;
-	transition: border-color 0.2s, color 0.2s;
-}
-
-.btn-outline:hover {
-	border-color: var(--gold);
-	color: var(--gold);
-}
-
 /* hamburger */
 .hamburger {
 	display: flex;

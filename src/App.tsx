@@ -2,9 +2,10 @@ import { useState } from "react";
 import './App.css'
 import SplashScreen from './components/SplashScreen';
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
 
   return (
     <>
@@ -51,67 +52,6 @@ const css = `
   }
 
   .gold { color: var(--gold); }
-  .gold-line {
-    display: inline-block;
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    vertical-align: middle;
-    margin-right: 12px;
-  }
-  .label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 140px 60px 80px;
-    position: relative;
-    z-index: 2;
-  }
-  .hero h1 {
-    font-size: clamp(48px, 5vw, 76px);
-    line-height: 1.1;
-    margin-bottom: 24px;
-    font-weight: 400;
-  }
-  .hero p {
-    font-size: 16px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 420px;
-    margin-bottom: 40px;
-  }
-  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .hero-badges {
-    display: flex;
-    gap: 40px;
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(201,168,76,0.15);
-  }
-  .hero-badge {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .hero-badge strong {
-    font-size: 13px;
-    color: var(--gold-light);
-    font-weight: 500;
-  }
-  .hero-badge span { font-size: 11px; color: var(--text-muted); }
 
   /* ── MARQUEE ── */
   .marquee-wrap {
@@ -710,24 +650,8 @@ function ABCLights() {
       <style>{css}</style>
 
       <Header />
-      {/* ── HERO ── */}
-      <section id="home">
-        <div className="hero">
-          <div className="label"><span className="gold-line" />Welcome to ABC Lights</div>
-          <h1>Your One-Stop Destination for <span className="">Modern & Elegant</span> Lighting</h1>
-          <p>ABC Lights provides modern and reliable lighting solutions for homes and businesses, helping you create bright, beautiful, and comfortable spaces with ease.</p>
-          <div className="hero-ctas">
-            <a href="#products" className="btn-primary" >Explore Products</a>
-            <a href="#about" className="btn-outline" >About Us</a>
-          </div>
-          <div className="hero-badges">
-            <div className="hero-badge"><strong>Latest Designs</strong><span>Always in trend</span></div>
-            <div className="hero-badge"><strong>Premium Quality</strong><span>Trusted brands</span></div>
-            <div className="hero-badge"><strong>Free Shipping</strong><span>On all orders</span></div>
-            <div className="hero-badge"><strong>Affordable</strong><span>Best pricing</span></div>
-          </div>
-        </div>
-      </section>
+
+      <Hero />
 
       {/* ── MARQUEE ── */}
       <div className="marquee-wrap">
